@@ -42,13 +42,7 @@
 <body>
     <form method="POST" action="admin_user_update.php">
     <div class="container-xxl position-relative bg-white d-flex p-0">
-        <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-                
-            </div>
-        </div>
+      
         <!-- Spinner End -->
 
 
@@ -70,8 +64,8 @@
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-light text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">LIST OF USERS</h6>
-                        <a href="newuseradd.php" button type="button" class="btn btn-primary rounded-pill m-2"> + Add New</button></a>
+                        <h6 class="mb-0">LIST OF AnimalCategories</h6>
+                        <a href="addnewcategory.php" button type="button" class="btn btn-primary rounded-pill m-2"> + Add New</button></a>
                
                     </div>
                     <div class="table-responsive">
@@ -80,59 +74,35 @@
 
                                 <tr class="text-dark">
                                     <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                                    <th scope="col" Name="first_name">First Name</th>
-                                    <th scope="col" Name="last_name">Last Name</th>
+                                    <th scope="col" Name="first_name">CAtegory Id</th>
+                                    <th scope="col" Name="last_name">Category Name</th>
                                     <!-- <th scope="col" Name="user_name">User Name</th> -->
-                                    <th scope="col" Name="mail">E-mail</th>
-                                    <th scope="col" Name="role">Role</th>
-                                    <th scope="col" Name="staus">Status</th>
                                     <th colspan="2" scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
                                 include 'dbcon.php';
-                                $sql1="SELECT * FROM users where role_id=2";
+                                $sql1="SELECT * from animal_categories";
                                 $res=$conn->query($sql1);
                                 if(!$res){
                                 die("invalid query: ".$conn->error);
                                 }
                                 while($row=$res->fetch_assoc()){
-                                    $first_name=$row["first_name"];
+                                    $name=$row["name"];
                                     echo " <tr>
                                     <td><input class=form-check-input type=checkbox></td>
-                                    <td>".ucfirst($first_name)."</td>
-                                    <td>".$row["last_name"]."</td>
+                                    <td>".$row['category_id']."</td>
+                                    <td>".ucfirst($name)."</td>";
                                    
-                                    <td>".$row["email"]."</td>";
-                                    if($row["role_id"]==3){
-                                        echo"<td>user</td>";
-                                    }
-                                    elseif($row["role_id"]==1) {
-                                        echo"<td> Super Admin</td>";
-                                    }
-                                    if($row["role_id"]==2){
-                                        echo"<td>Catalog manager</td>";
-                                    }
-
-
-                                    if($row["user_status"]==1){
-                                        echo "<td>Active </td>";
-                                      }
-                                    elseif($row["user_status"]==0){
-                                      echo "<td>Pending</td>";
-                                    }
-                                    else{
-                                        echo"<td>Rejected</td>";
-                                    }
                                    
 
                           echo "<td><div class='dropdown'>
                           <a href='#' class='nav-link dropdown-toggle' data-bs-toggle='dropdown'><i class='far fa-file-alt me-2'></i>Action</a>
                           <div class='dropdown-menu bg-border-2px solid blue'>
-                              <a href=admin_user_update.php?uid=$row[user_id] name='update' class='dropdown-item'>Edit</a>
-                              <a href='accept.php?uid=$row[user_id]&us=$row[user_status]' class='dropdown-item'>Accept</a>
-                              <a href='reject.php?uid=$row[user_id]' class='dropdown-item'>Reject</a>
+                              <a href='updatecategory.php?cid=$row[category_id]' name='update' class='dropdown-item'>Edit</a>
+                             
+                              <a href='deletecategory.php?cid=$row[category_id]' name='delete' class='dropdown-item'>Delete</a>
                                     </div>          
                                     </td></tr>";
                                 }   

@@ -84,7 +84,7 @@ if(mysqli_num_rows($result)>0){
                     </div>
                     <br><br>
                         <!-------------         last name    ---------------------->
-                        <input type="hidden" class="form-control" name="user_id" value="<?php echo $row['animal_id'] ?>" />
+                        <!-- <input type="hidden" class="form-control" name="user_id" value="<?php echo $row['animal_id'] ?>" />
                        
                       <div class="col-md-6">
                         <div class="form-group row">
@@ -94,8 +94,8 @@ if(mysqli_num_rows($result)>0){
                           </div>
                         </div>
                       </div>
-                      <br><br>
-                        <!-------------         user name    ---------------------->
+                      <br><br> -->
+                       <!-----------         Description   -------------------->
                         <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
@@ -126,20 +126,10 @@ if(mysqli_num_rows($result)>0){
                         <br><br>
                         <!-------------         last name    ---------------------->
                         <input type="hidden" class="form-control" name="animal_id" value="<?php echo $row['animal_id'] ?>" />
-                       
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label" >Quantity</label>
-                          <div class="col-sm-9">
-                            <input type="text" name="quantity" class="form-control"value="<?php echo $row['quantity'] ?>" />
-                          </div>
-                        </div>
-                      </div>
-                      <br><br>
-                         
+      
                     
                     </div>
-                    <button class="btn btn-primary w-50 m-2" type="submit" name="update">update</button>
+                    <button class="btn btn-primary w-50 m-2" type="submit" name="update">Update</button>
                     <button class="btn btn-outline-primary w-50 m-1" type="submit" name="cancel">Cancel</button>
                            
                               

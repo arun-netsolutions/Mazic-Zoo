@@ -71,7 +71,8 @@
                 <div class="bg-light text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0">LIST OF USERS</h6>
-                        <a href="">Show All</a>
+                        <a href="newuseradd.php" button type="button" class="btn btn-primary rounded-pill m-2"> + Add New</button></a>
+               
                     </div>
                     <div class="table-responsive">
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
@@ -81,7 +82,7 @@
                                     <th scope="col"><input class="form-check-input" type="checkbox"></th>
                                     <th scope="col" Name="first_name">First Name</th>
                                     <th scope="col" Name="last_name">Last Name</th>
-                                    <th scope="col" Name="user_name">User Name</th>
+                                    <!-- <th scope="col" Name="user_name">User Name</th> -->
                                     <th scope="col" Name="mail">E-mail</th>
                                     <th scope="col" Name="role">Role</th>
                                     <th scope="col" Name="staus">Status</th>
@@ -90,18 +91,20 @@
                             </thead>
                             <tbody>
                                 <?php
-                                include 'dbcon.php';
+                            
                                 $sql1="SELECT * FROM users where role_id=3";
                                 $res=$conn->query($sql1);
                                 if(!$res){
                                 die("invalid query: ".$conn->error);
                                 }
                                 while($row=$res->fetch_assoc()){
+                                    $first_name=$row["first_name"];
+                                    $last_name=$row["last_name"];
+                                
                                     echo " <tr>
                                     <td><input class=form-check-input type=checkbox></td>
-                                    <td>".$row["first_name"]."</td>
-                                    <td>".$row["last_name"]."</td>
-                                    <td>".$row["user_name"]."</td>
+                                    <td>".ucfirst($first_name)."</td>
+                                    <td>".ucfirst($last_name)."</td>
                                     <td>".$row["email"]."</td>";
                                     if($row["role_id"]==3){
                                         echo"<td>user</td>";
@@ -126,11 +129,14 @@
                                    
 
                           echo "<td><div class='dropdown'>
-                          <a href='#' class='nav-link dropdown-toggle' data-bs-toggle='dropdown'><i class='far fa-file-alt me-2'></i>action</a>
+                          <a href='#' class='nav-link dropdown-toggle' data-bs-toggle='dropdown'><i class='far fa-file-alt me-2'></i>Action</a>
                           <div class='dropdown-menu bg-border-2px solid blue'>
-                              <a href=admin_user_update.php?uid=$row[user_id] name='update' class='dropdown-item'>Edit</a>
-                              <a href='accept.php?uid=$row[user_id]&us=$row[user_status]' class='dropdown-item'>Accept</a>
-                              <a href='reject.php?uid=$row[user_id]' class='dropdown-item'>Reject</a>
+                              <a href=admin_user_update.php?uid=$row[user_id] name='update' class='dropdown-item'>Edit</a>";
+                            if($row['user_status']==0){
+                            echo "<a href='accept.php?uid=$row[user_id]&us=$row[user_status]' class='dropdown-item'>Accept</a>";
+                                                        
+                            }
+                          echo "<a href='reject.php?uid=$row[user_id]' class='dropdown-item'>Reject</a>
                                     </div>          
                                     </td></tr>";
                                 }   

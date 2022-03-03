@@ -3,7 +3,7 @@
 
 include 'dbcon.php';
 session_start();
-if(isset($_SESSION["user_name"])){
+if(isset($_SESSION["email"])){
     header("location:admin-home.php");
 }
    ?> 
@@ -81,26 +81,26 @@ if(isset($_SESSION["user_name"])){
                         <label for="floatingInput">Email address</label>
                         <div class="form-floating mb-3">
                    
-                            <input type="email" class="form-control" id="email" name="email"  placeholder="name@example.com">
+                            <input type="email" class="form-control" id="email" name="email"  placeholder="name@example.com" autocomplete="off">
                             
                         </div>
                          <label for="floatingPassword">Password</label>
                         <div class="form-floating mb-4">
                        
-                            <input type="password" class="form-control" id="password" name="password"  placeholder="Password">
+                            <input type="password" class="form-control" id="password" name="password"  placeholder="Password" autocomplete="off">
                           
                         </div>
                         
 
-                        <div class="d-flex align-items-center justify-content-between mb-4">
+                        <!-- <div class="d-flex align-items-center justify-content-between mb-4">
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <!-- <label class="form-check-label" for="exampleCheck1">Check me out</label> -->
-                            </div>
+                            <!-- </div> -->
                             <!-- <a href="">Forgot Password</a> -->
-                        </div>
-                        <input type="submit" name="signin" class="btn btn-primary py-3 w-100 mb-4">Sign In</button>
-                        <p class="text-center mb-0">Don't have an Account? <a href="">Sign Up</a></p>
+                    
+                        <input type="submit" name="signin" class="btn btn-primary py-3 w-100 mb-4"></button>
+                        <p class="text-center mb-0">Don't have an Account? <a href="register.php">Sign Up</a></p>
                     </div>
                 </div>
             </div>

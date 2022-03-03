@@ -1,21 +1,36 @@
 <?php
  include 'dbcon.php';
+ $sql="SELECT distinct * FROM `animal_categories`";
+$query=mysqli_query($conn,$sql) or die("Query Unsuccessful");
+$str="";
+while($row=mysqli_fetch_assoc($query)){
+    $str .= "<option value='{$row['category_id']}'>{$row['name']}</option>";
+
+}
 if(isset($_POST['add'])){
   $target="img/".basename($_FILES['image']['name']);
 
 $image=$_FILES['image']['name'];
 $animal_name=$_POST['animal_name'];
-$animal_category=$_POST['animal'];
+$animal_category=$_POST['animal_category'];
 $animal_description=$_POST['animal_description'];
-$animal_quantity=$_POST['animal_quantity'];
+// $animal_quantity=$_POST['animal_quantity'];
 
 $status=$_POST['status'];
+// $sql1="SELECT * FROM `animal_details` WHERE animal_name='$animal_name' and animal_category='$animal_category'";
+// $result1 = mysqli_query($conn, $sql1);
+        
+// if (mysqli_num_rows($result1)>1){
 
 
-$sql="INSERT INTO `animal_details`( `animal_name`, `animal_category`, `animal_description`, `animal_image`, `quantity`, `status`) 
-VALUES ('$animal_name','$animal_category','$animal_description','$image','$animal_quantity','$status')";
+//   $sql3="UPDATE animal_details SET quantity=quantity+1 where animal_name='$animal_name' and animal_category='$animal_category'";
+ 
+// }
+// else{
+$sql2="INSERT INTO `animal_details`( `animal_name`, `animal_category`, `animal_description`, `animal_image`,  `status`) 
+VALUES ('$animal_name','$animal_category','$animal_description','$image','$status')";
 
-$result = mysqli_query($conn, $sql);
+$result = mysqli_query($conn, $sql2);
         
 if(move_uploaded_file($_FILES['image']['tmp_name'],$target)){
 
@@ -34,10 +49,10 @@ else{
 if(mysqli_affected_rows($conn)==1){
   header("location:animalslist.php");
  
+ }
+
 }
 
-
-}
 ?>
 
 
@@ -48,7 +63,7 @@ if(mysqli_affected_rows($conn)==1){
 
 <head>
     <meta charset="utf-8">
-    <title>DASHMIN - Bootstrap Admin Template</title>
+    <title>Add Animal</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -77,7 +92,7 @@ if(mysqli_affected_rows($conn)==1){
 </head>
 
 <body>
-    <form method="POST"  enctype="multipart/form-data">
+    <form method="POST"  enctype="multipart/form-data" action="<?php echo $_SERVER['PHP_SELF'] ?>">
     <div class="container-xxl position-relative bg-white d-flex p-0">
         <!-- Spinner Start -->
         <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -114,20 +129,21 @@ if(mysqli_affected_rows($conn)==1){
                       <form class="form-sample">
                         <p class="card-description">
                          <h4> Personal info</h4>
+                        
                         </p>
                         <!-------------         Animal name    ---------------------->
-                        <div class="row">
+                        <!-- <div class="row">
                           <div class="col-md-6">
                             <div class="form-group row">
                               <label class="col-sm-3 col-form-label">Name</label>
                               <div class="col-sm-9">
-                              <input type="text" name="animal_name" class="form-control""/>
+                              <input type="text" name="animal_name" class="form-control"/>
                              
                               </div>
                             </div>
                           </div>
                         </div>
-                        <br><br>
+                        <br><br> -->
                             <!-------------        Animal Category   ---------------------->
                             <input type="hidden" class="form-control" name=""  />
                            
@@ -136,24 +152,36 @@ if(mysqli_affected_rows($conn)==1){
                               <label class="col-sm-3 col-form-label" >Category</label>
                              
                              <div class="col-sm-9">
-                             <?php  
+                           
+                          <label>Category</label>
+                          <select id="category" name="animal_category">
+                            
+                          <option value="" id="CatId" class="form-control" >Select Category</option>
+                          <?php 
+                          echo $str;
+                          ?>
+                          </select>
+                          <br>
+                          <label>Name</label>
+                          <select id="animalName" name="animal_name">
+                          <option value="" class="form-control" >Select Name</option>
+</select>
+<!-- // $sql1="SELECT * from animal_category";
+// $result1=mysqli_query($conn, $sql1)or die("query unscessful.");
+// if(mysqli_num_rows($result1)>0){
+//   echo "<select name='animal' style='width:100%;'>"; 
+//   while($row1 = mysqli_fetch_assoc($result1)){
+//     if($row['animal_id'] == $row1['animal_id']){
+// $select = "selected";
+//     }else{
+// $select ="";
+//     }
+//   echo "'<option {$select} value='{$row1['name']}'>{$row1['name']} </option>"; 
+//   }
+// } -->
 
-$sql1="SELECT * from animal_category";
-$result1=mysqli_query($conn, $sql1)or die("query unscessful.");
-if(mysqli_num_rows($result1)>0){
-  echo "<select name='animal' style='width:100%;'>"; 
-  while($row1 = mysqli_fetch_assoc($result1)){
-    if($row['animal_id'] == $row1['animal_id']){
-$select = "selected";
-    }else{
-$select ="";
-    }
-  echo "'<option {$select} value='{$row1['name']}'>{$row1['name']} </option>"; 
-  }
-}
 
-
-       ?>
+     
                                 <!-- <input type="text" name="animal_category" class="form-control" /> -->
                               </div>
                             </div>
@@ -198,9 +226,17 @@ $select ="";
                             </div>
                           </div>
                           <br>
+
+                        
+
+
+
+
+
+
                           <!------------    Quantity             ------------>
 
-                          <div class="row">
+                          <!-- <div class="row">
                           <div class="col-md-6">
                             <div class="form-group row">
                               <label class="col-sm-3 col-form-label" aria-disabled="true">Quantity</label>
@@ -211,7 +247,7 @@ $select ="";
                             </div>
                           </div>
                             </div>
-                            <br>
+                            <br> -->
                            
                                               
     <!---------------------       status            --------------------------------->
@@ -271,6 +307,37 @@ include 'footer.php';
     <!-- Template Javascript -->
  
     <script src="js/main.js"></script>
+
+      <script type="text/javascript">
+      $(document).ready(function(){
+        function loadData(categorytype, category_id){
+          //var cid= $("#CatId").val();
+          // var Category_id= 1;
+          // Console.log(category_id);
+          $.ajax({
+            url : "LoadCategoryName.php",
+            type : "POST",
+            data : {categorytype: categorytype, id: category_id},
+            success :function(data){
+            if(categorytype == "categoryData"){
+           $("#animalName").html(data);
+          }else{
+
+          }
+        // $("#category").append(data);
+        }
+          });
+        }
+      // loadData();
+
+      $("#category").on("change",function(){
+        var category=$("#category").val();
+
+
+        loadData("categoryData",category);
+      })
+      });
+    </script>
     </form>
 </body>
 

@@ -16,7 +16,6 @@ if(isset($_POST['signin'])){
                 session_start();
                 $_SESSION["email"]=$row["email"];
                 $_SESSION["user_id"]=$row["user_id"];
-                $_SESSION["user_name"]=$row["user_name"];
                 $_SESSION["role_id"]=$row["role_id"];
  
                 header("location:admin-home.php");
@@ -31,7 +30,7 @@ if(isset($_POST['signin'])){
     }
 }
      else{
-        echo " You Have Entered Incorrect Password";
+        echo " <alert>You Have Entered Incorrect Password</alert>";
      
         exit();
      }

@@ -92,16 +92,19 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">First Name</label>
+                          <label class="col-sm-3 col-form-label">User Name</label>
                           <div class="col-sm-9">
-                          <input type="text" name="first_name" class="form-control" />
+                          <input type="text" name="first_name" class="form-control" value="<?php
+                           echo  $_SESSION["user_name"];
+                          
+                          ?>"/>
                          
                           </div>
                         </div>
                       </div>
                     </div>
                     <br><br>
-                        <!-------------         last name    ---------------------->
+                        <!-- -----------         last name    --------------------
                         <input type="hidden" class="form-control" name="user_id"  />
                        
                       <div class="col-md-6">
@@ -112,15 +115,16 @@
                           </div>
                         </div>
                       </div>
-                      <br><br>
+                      <br><br> -->
                        <!-------------       Phone Number   ---------------------->
                        <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label" aria-disabled="true" >Phone No.</label>
+                          <label class="col-sm-3 col-form-label" aria-disabled="true" >Phone No.</label> 
                           <div class="col-sm-9">
+                          <small>Format: 123-4567-890</small>
                           <input type="text" id="phone" name="phone" placeholder="" class="form-control" pattern="[0-9]{3}-[0-9]{4}-[0-9]{3}" required><br><br>
-                             <small>Format: 123-4567-890</small><br><br>
+                          
                           </div>
                         </div>
                       </div>
@@ -222,29 +226,20 @@
                     <br><br>
                   </form>
                 </div>
+                <?php
+
+include "footer.php";
+?>
               </div>
+    
             </div>
 
             <!-- Footer Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="bg-light rounded-top p-4">
-                    <div class="row">
-                        <div class="col-12 col-sm-6 text-center text-sm-start">
-                            &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
-                        </div>
-                        <div class="col-12 col-sm-6 text-center text-sm-end">
-                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                            Designed By <a href="https://htmlcodex.com">HTML Codex</a>
-                        </br>
-                        Distributed By <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+   
             <!-- Footer End -->
         </div>
         <!-- Content End -->
-</
+
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
@@ -268,8 +263,3 @@
 </body>
 
 </html>
-<?php
-//   }
-// }
-include "footer.php";
-?>

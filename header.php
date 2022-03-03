@@ -1,7 +1,7 @@
 <?php 
 include "dbcon.php";
 session_start();
-if(!isset($_SESSION["user_name"])){
+if(!isset($_SESSION["email"])){
     header("location:login.php");
 }
 ?>
@@ -20,7 +20,7 @@ if(!isset($_SESSION["user_name"])){
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex"><?php echo $_SESSION["user_name"] ?></span>
+                            <span class="d-none d-lg-inline-flex"><?php echo $_SESSION["first_name"] ?></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="profile.php" class="dropdown-item">My Profile</a>
@@ -46,10 +46,12 @@ if(!isset($_SESSION["user_name"])){
            if($_SESSION['role_id']==1)
            { 
             ?>
-            <a href="adminlist.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i> Admin List</a>
+            <a href="adminlist.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i> Admin List</a>  
             <?php
            }
             ?>
+             <a href="animalcategorylist.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Animal Categories</a>
+          
             <a href="animalslist.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Animals List</a>
             <!-- <a href="ticketform.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Ticket Booking</a> -->
          

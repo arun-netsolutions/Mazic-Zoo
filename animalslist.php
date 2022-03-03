@@ -9,7 +9,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>DASHMIN - Bootstrap Admin Template</title>
+    <title>Animal List</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -81,7 +81,7 @@
                                     <th scope="col" Name="">Category</th>
                                     <th scope="col" Name="user_name">Description</th>
                                     <th scope="col" Name="mail">image</th>
-                                    <th scope="col" Name="role">Quantity</th>
+                                    <!-- <th scope="col" Name="role">Quantity</th> -->
                                     <th scope="col" Name="staus">Status</th>
                                     <th colspan="2" scope="col"></th>
                                 </tr>
@@ -100,9 +100,8 @@
                                     <td>".$row["animal_name"]."</td>
                                     <td>".$row["animal_category"]."</td>
                                     <td>".$row["animal_description"]."</td>
-                                    <td><img src='img/".$row['animal_image']."' height=80px; width=60px: /> </td>
-                                    <td>".$row["quantity"]."</td>";
-                                  
+                                    <td><img src='img/".$row['animal_image']."' height=80px; width=60px: /> </td>";
+                                                                    
                
 
                                     if($row["status"]==0){
@@ -116,10 +115,10 @@
 
                         
                                     echo "<td><div class='dropdown'>
-                          <a href='#' class='nav-link dropdown-toggle' data-bs-toggle='dropdown'><i class='far fa-file-alt me-2'></i>action</a>
+                          <a href='#' class='nav-link dropdown-toggle' data-bs-toggle='dropdown'><i class='far fa-file-alt me-2'></i>Action</a>
                           <div class='dropdown-menu bg-border-2px solid blue'>
                               <a href=upd_animal_list.php?id=$row[animal_id] name='update' class='dropdown-item'>Edit</a>
-                               <a href='animaldelete.php?id=$row[animal_id]' type='submit' name='delete' class='dropdown-item'>delete</a>
+                               <a href='animaldelete.php?id=$row[animal_id]' type='submit' name='delete' class='dropdown-item'>Delete</a>
                 </div>          
                                     </td></tr>";
                                 }   

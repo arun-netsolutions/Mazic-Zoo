@@ -10,7 +10,7 @@ $(function(){
               required:true
           },
           lastname:{
-required:true
+            required:true
           },
           email:{
               required:true
@@ -25,25 +25,26 @@ required:true
           
       },
       messages:{
+        firstname:{
+            required:"enter first Name",
+        },
+        lastname:{
+            required:"please enter your lastname",
+            },
+ 
         username:{
-            required:"please enter your username",
+            required:"Please Enter Your Username",
             },
             email:{
-                required:"please enter your email",
+                required:"Please Enter Your Email",
                 },
                 password:{
-                    required:"please enter your password",
+                    required:"Please Enter Your Password",
                     },
                     cpassword:{
-                        required:"confirm your email",
+                        required:"Confirm Your Password",
                         },
-                        firstname:{
-                            required:"enter firstname"
-                        },
-                        lastname:{
-                            required:"please enter your lastname",
-                            },
-                 
+                     
              
             }, 
             // errorPlacement:function(error,element){
