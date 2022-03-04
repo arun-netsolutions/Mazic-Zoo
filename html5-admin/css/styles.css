@@ -330,7 +330,7 @@ select:focus {
   padding: 10px 20px;
   border-radius: .5rem;
   margin-bottom: 20px;
-  color: #fff;
+  color: rgb(238, 56, 56);
   background-color: #888; }
   .alert .fa {
     margin-right: 5px; }
