@@ -23,8 +23,7 @@ $sql="INSERT INTO `ticket`( `first_name`, `last_name`, `phone`, `quantity`, `adu
 $result=mysqli_query($conn, $sql)or die("query unscessful.");
 if(mysqli_affected_rows($conn)==1)
 {
-echo "data entered successfully";
-
+header("location:confirmed-tickets.php");
 }
 else{
     echo "error";

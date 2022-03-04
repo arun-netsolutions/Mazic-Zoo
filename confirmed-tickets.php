@@ -80,12 +80,12 @@
                                 <tr class="text-dark">
                                     <th scope="col"><input class="form-check-input" type="checkbox"></th>
                                     <th scope="col" Name="first_name">First Name</th>
-                                    <th scope="col" Name="last_name">Last Name</th>
+                                    <!-- <th scope="col" Name="last_name">Last Name</th> -->
                                     <th scope="col" Name="user_name">Phone Number</th>
                                     <th scope="col" Name="phone">Quantity</th>
                                     <th scope="col" Name="role">Adult</th>
                                     <th scope="col" Name="staus">Child</th>
-                                    <th colspan="2" scope="col">Date</th>
+                                    <th colspan="2" scope="col">Date and Time</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -100,7 +100,7 @@
                                     echo " <tr>
                                     <td><input class=form-check-input type=checkbox></td>
                                     <td>".$row["first_name"]."</td>
-                                    <td>".$row["last_name"]."</td>
+                                   
                                     <td>".$row["phone"]."</td>
                                     <td>".$row["quantity"]."</td>
                                     <td>".$row["adult"]."</td> 

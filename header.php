@@ -20,7 +20,7 @@ if(!isset($_SESSION["email"])){
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex"><?php echo $_SESSION["first_name"] ?></span>
+                            <span class="d-none d-lg-inline-flex"><?php echo $_SESSION["email"] ?></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="profile.php" class="dropdown-item">My Profile</a>
@@ -59,7 +59,7 @@ if(!isset($_SESSION["email"])){
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Tickets</a>
                 <div class="dropdown-menu bg-transparent border-0">
-                    <a href="ticketform.php" class="dropdown-item">Apply Ticket</a>
+                    <a href="modals.php" class="dropdown-item">Apply Ticket</a>
                     <a href="confirmed-tickets.php" class="dropdown-item">List of all tickets</a>
                     <!-- <a href="waiting" class="dropdown-item">Log Out</a> -->
                            </div>

@@ -17,10 +17,7 @@ if(mysqli_num_rows($result)>0){
                 <th class="First">First Name</th>
                 <td class="First">'.$row["first_name"].'</td>
                 </tr>
-                <tr>
-                <th class="Last">Last Name</th>
-                <td class="Last">'.$row["last_name"].'</td>
-                </tr>
+               
                 <tr>
                 <th class="Phone No.">Phone No.</th>
                 <td class="Phone No.">'.$row["phone"].'</td>
@@ -83,3 +80,9 @@ $btnPrint.addEventListener("click", () => {
 
 
 
+
+
+ <!-- <tr>
+            <th class="Last">Last Name</th>
+                <td class="Last">'.$row["last_name"].'</td>
+         </tr> -->
