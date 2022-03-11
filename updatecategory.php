@@ -1,10 +1,10 @@
 
-
 <?php
  include 'dbcon.php';
  $cid=$_GET['cid'];
  
- $sql="SELECT * FROM animal_categories WHERE `animal_id` = {$cid}";
+
+ $sql="SELECT * FROM animal_categories WHERE `category_id` = {$cid}";
  $result=mysqli_query($conn, $sql)or die("query unscessful.");
  if(mysqli_num_rows($result)>0){
    while($row = mysqli_fetch_assoc($result)){
@@ -68,13 +68,15 @@
                             <h6 class="mb-4">Basic Form</h6>
                             <form>
                                 <div class="mb-3">
+                                     <input type="hidden" class="form-control" name="category_id" value="<?php echo $row['animal_id'] ?>" />
+                     
                                     <label for="CategoryName" class="form-label">Category Name</label>
                                     <input type="text" class="form-control" id="category_name" name="category_name" value="<?php 
 echo $row['name']                                    
                                     ?>">
                                 </div>
                                 
-                                <button type="submit" name="submit" class="btn btn-primary">ADD</button>
+                                <button type="submit" name="update" class="btn btn-primary">Update</button>
                                 </form>
                         </div>
                     </div>
@@ -99,7 +101,9 @@ echo $row['name']
 <footer>
 <?php 
    }
+
 }
+
 include 'footer.php';
 ?>
 </footer>

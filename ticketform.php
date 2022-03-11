@@ -10,7 +10,6 @@
 
           //---------------display records----------------------
 
-          echo "Arun";
  
 
           ?>
@@ -96,10 +95,10 @@
                                     <div class="col-sm-9">
                                     <input type="text" name="first_name" class="form-control" value='
                                     <?php
-                                    
-                                    if(isset($_SESSION['first_name'])){
+                          
+                                    if(isset($_SESSION["modal_first_name"])){
    
-                                      echo $_SESSION['first_name'];
+                                      echo $_SESSION["modal_first_name"];
                                   }  
                                     
                                     ?>
@@ -112,17 +111,27 @@
                               </div>
                               <br><br>
                                   <!-- -----------         last name    --------------------
-                                  <input type="hidden" class="form-control" name="user_id"  />
+                                   <input type="hidden" class="form-control" name="user_id"  /> -->
                                 
                                 <div class="col-md-6">
                                   <div class="form-group row">
                                     <label class="col-sm-3 col-form-label" >Last Name</label>
                                     <div class="col-sm-9">
-                                      <input type="text" name="last_name" class="form-control" />
+                                      <input type="text" name="last_name" class="form-control" value='
+                                    <?php
+                          
+                                    if(isset($_SESSION["modal_last_name"])){
+   
+                                      echo $_SESSION["modal_last_name"];
+                                  }  
+                                    
+                                    ?>
+                                    
+                                   ' /> 
                                     </div>
                                   </div>
                                 </div>
-                                <br><br> -->
+                                <br>
                                 <!-------------       Phone Number   ---------------------->
                                 <div class="row">
                                 <div class="col-md-6">

@@ -79,7 +79,7 @@
                             <thead>
 
                                 <tr class="text-dark">
-                                    <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                                    <!-- <th scope="col"><input class="form-check-input" type="checkbox"></th> -->
                                     <th scope="col" Name="first_name">First Name</th>
                                     <th scope="col" Name="last_name">Last Name</th>
                                     <!-- <th scope="col" Name="user_name">User Name</th> -->
@@ -100,7 +100,7 @@
                                 while($row=$res->fetch_assoc()){
                                     $first_name=$row["first_name"];
                                     echo " <tr>
-                                    <td><input class=form-check-input type=checkbox></td>
+                                    
                                     <td>".ucfirst($first_name)."</td>
                                     <td>".$row["last_name"]."</td>
                                    

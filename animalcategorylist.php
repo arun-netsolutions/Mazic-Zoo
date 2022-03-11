@@ -73,8 +73,8 @@
                             <thead>
 
                                 <tr class="text-dark">
-                                    <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                                    <th scope="col" Name="first_name">CAtegory Id</th>
+                                    
+                                    <!-- <th scope="col" Name="first_name">CAtegory Id</th> -->
                                     <th scope="col" Name="last_name">Category Name</th>
                                     <!-- <th scope="col" Name="user_name">User Name</th> -->
                                     <th colspan="2" scope="col"></th>
@@ -91,8 +91,8 @@
                                 while($row=$res->fetch_assoc()){
                                     $name=$row["name"];
                                     echo " <tr>
-                                    <td><input class=form-check-input type=checkbox></td>
-                                    <td>".$row['category_id']."</td>
+                                    
+                                
                                     <td>".ucfirst($name)."</td>";
                                    
                                    

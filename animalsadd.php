@@ -95,12 +95,7 @@ if(mysqli_affected_rows($conn)==1){
     <form method="POST"  enctype="multipart/form-data" action="<?php echo $_SERVER['PHP_SELF'] ?>">
     <div class="container-xxl position-relative bg-white d-flex p-0">
         <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-                
-            </div>
-        </div>
+        
         <!-- Spinner End -->
 
 
@@ -127,10 +122,7 @@ if(mysqli_affected_rows($conn)==1){
                     <div class="card-body">
                       <h2 class="card-title">Animal Add Form</h2>
                       <form class="form-sample">
-                        <p class="card-description">
-                         <h4> Personal info</h4>
-                        
-                        </p>
+                      
                         <!-------------         Animal name    ---------------------->
                         <!-- <div class="row">
                           <div class="col-md-6">
@@ -146,24 +138,26 @@ if(mysqli_affected_rows($conn)==1){
                         <br><br> -->
                             <!-------------        Animal Category   ---------------------->
                             <input type="hidden" class="form-control" name=""  />
-                           
-                          <div class="col-md-6">
+                         
+                              
+                             <div class="row">
+                         
+                            
+                            <div class="col-md-6">
                             <div class="form-group row">
                               <label class="col-sm-3 col-form-label" >Category</label>
                              
                              <div class="col-sm-9">
                            
-                          <label>Category</label>
-                          <select id="category" name="animal_category">
+                          <select id="category" name="animal_category"style="height:40px; width:100%;">
                             
                           <option value="" id="CatId" class="form-control" >Select Category</option>
                           <?php 
                           echo $str;
                           ?>
                           </select>
-                          <br>
-                          <label>Name</label>
-                          <select id="animalName" name="animal_name">
+                          <br><br>
+                          <select id="animalName" name="animal_name" style="height:40px; width:100%;">
                           <option value="" class="form-control" >Select Name</option>
 </select>
 <!-- // $sql1="SELECT * from animal_category";
@@ -186,7 +180,8 @@ if(mysqli_affected_rows($conn)==1){
                               </div>
                             </div>
                           </div>
-                          <br><br>
+                             </div>
+                          <br>
                             <!-------------         Description   ---------------------->
                          
                             <!-- <div class="row">
@@ -204,14 +199,15 @@ if(mysqli_affected_rows($conn)==1){
                             <div class="row">
                           <div class="col-md-6">
                             <div class="form-group row">
-                              <label class="col-sm-3 col-form-label">Description</label>
-                              <div class="col-sm-9">
-                              <input type="textarea" name="animal_description" class="form-control""/>
-                             
+                              <label class="col-sm-4 col-form-label">Description</label>
+                              <div class="col-sm-8">
+                              <textarea name="animal_description" class="form-control" rows="4" cols="30">
+                              </textarea>
                               </div>
                             </div>
                           </div>
                         </div>
+                      <br>
                             <!-------------      Image   ---------------------->
                       
                           <div class="col-md-6">

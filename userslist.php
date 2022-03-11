@@ -1,9 +1,3 @@
-<?php
-
-
-?>
-
-
 
 
 <!DOCTYPE html>
@@ -79,7 +73,7 @@
                             <thead>
 
                                 <tr class="text-dark">
-                                    <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                                    <!-- <th scope="col"><input class="form-check-input" type="checkbox"></th> -->
                                     <th scope="col" Name="first_name">First Name</th>
                                     <th scope="col" Name="last_name">Last Name</th>
                                     <!-- <th scope="col" Name="user_name">User Name</th> -->
@@ -102,7 +96,7 @@
                                     $last_name=$row["last_name"];
                                 
                                     echo " <tr>
-                                    <td><input class=form-check-input type=checkbox></td>
+                                    
                                     <td>".ucfirst($first_name)."</td>
                                     <td>".ucfirst($last_name)."</td>
                                     <td>".$row["email"]."</td>";

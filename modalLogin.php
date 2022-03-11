@@ -2,43 +2,34 @@
 include 'dbcon.php';
 if(isset($_POST['login'])){
     
-    $email=mysqli_real_escape_string($conn,$_POST['email']);
-    $password=$_POST['password'];
+    $user_id=$_POST['user_id'];
+
    
-    $sql="select * from users where email='$email'";
+    $sql="select * from users where user_id='$user_id'";
     
     $result=mysqli_query($conn, $sql);
     $num=mysqli_num_rows($result);
     if($num==1){
         while($row=mysqli_fetch_assoc($result)){
             
-            if(password_verify($password,$row["password"]) and $row["role_id"]=='1'or'2' and $row["user_status"]=='1'){
                 session_start();
+                $_SESSION["modal_first_name"]=$row["first_name"];
                 
-                $_SESSION["first_name"]=$row["first_name"];
-
-                $_SESSION[""]=$row["last_name"];
-              
- 
-                header("location:ticketform.php");
-               
-            }
+                  $_SESSION["modal_last_name"]=$row["last_name"];
+                 
+                     header("location:ticketform.php");
+            
+        }
+    }
             else{
-                echo "<script>alert('username or password does not match or profile is not approved yet ')</script>";
+               
                 header("location:modals.php");
-                 echo "<script>alert('username or password does not match')</script>";
+              
             }
      
     }
-}
-     else{
-        echo " <alert>You Have Entered Incorrect Password</alert>";
-     
-        exit();
-     }
         
-}
-    
+ 
    ?> 
      
    

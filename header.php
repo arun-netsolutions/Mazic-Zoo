@@ -55,11 +55,12 @@ if(!isset($_SESSION["email"])){
             <a href="animalslist.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Animals List</a>
             <!-- <a href="ticketform.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Ticket Booking</a> -->
          
-         
+            <a href="addnewanimal.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>+Add new animal</a>
+          
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Tickets</a>
                 <div class="dropdown-menu bg-transparent border-0">
-                    <a href="ticketform.php" class="dropdown-item">Apply Ticket</a>
+                    <a href="modals.php" class="dropdown-item">Apply Ticket</a>
                     <a href="confirmed-tickets.php" class="dropdown-item">List of all tickets</a>
                     <!-- <a href="waiting" class="dropdown-item">Log Out</a> -->
                            </div>

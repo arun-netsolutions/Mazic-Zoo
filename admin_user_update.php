@@ -96,18 +96,18 @@ if(mysqli_num_rows($result)>0){
                       </div>
                       <br><br>
                         <!-------------         user name    ---------------------->
-                        <div class="row">
+                        <!-- <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label" aria-disabled="true">User Name</label>
                           <div class="col-sm-9">
-                          <input type="text" class="form-control" value="<?php echo $row['user_name'] ?>"/>
+                          <input type="text" class="form-control" />
                          
                           </div>
                         </div>
                       </div>
                         </div>
-                        <br><br>
+                        <br><br> -->
                         <!-------------         last name    ---------------------->
                   
                       <div class="col-md-6">

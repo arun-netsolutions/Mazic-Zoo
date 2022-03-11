@@ -76,7 +76,7 @@
                             <thead>
 
                                 <tr class="text-dark">
-                                    <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                                    
                                     <th scope="col" Name="Name"> Name</th>
                                     <th scope="col" Name="">Category</th>
                                     <th scope="col" Name="user_name">Description</th>
@@ -96,7 +96,7 @@
                                 }
                                 while($row=$res->fetch_assoc()){
                                     echo " <tr>
-                                    <td><input class=form-check-input type=checkbox></td>
+                                   
                                     <td>".$row["animal_name"]."</td>
                                     <td>".$row["animal_category"]."</td>
                                     <td>".$row["animal_description"]."</td>

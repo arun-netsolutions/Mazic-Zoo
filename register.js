@@ -3,9 +3,7 @@ $(function(){
     if($registerform.length){
   $registerform.validate({
       rules:{
-          username:{
-              required:true
-          },
+         
           firstname:{
               required:true
           },

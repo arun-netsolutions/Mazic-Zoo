@@ -143,7 +143,7 @@ if(isset($_SESSION['error'])){
 </script>
 
 <body>
-  <form method="POST" id="register">
+  <form method="POST" id="register" onsubmit="return validateform()">
     <div class="container-xxl position-relative bg-white d-flex p-0">
         <!-- Spinner Start -->
         <!-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -168,14 +168,14 @@ if(isset($_SESSION['error'])){
                         </div>
                         <label for="floatingText" >First Name</label>
                         <div class="form-floating mb-4">
-                            <input type="text" class="form-control" id="firstname" name="firstname" placeholder="" autocomplete="off" >
-                            <label for="floatingInput">First Name</label>
+                            <input type="text" class="form-control" id="firstname" name="firstname" placeholder="" autocomplete="off" minlength="4" maxlength="8" >
+                           
                      
                             
                             </div>
                             <label for="floatingText">Last Name</label>
                         <div class="form-floating mb-4">
-                            <input type="text" class="form-control" id="lastname" name="lastname" placeholder="" autocomplete="off">
+                            <input type="text" class="form-control" id="lastname" name="lastname" placeholder="" minlength="4" maxlength="8" autocomplete="off">
                            
                         
                         </div>
@@ -186,7 +186,7 @@ if(isset($_SESSION['error'])){
                         </div> -->
                         <label for="floatingInput">Email address</label>
                         <div class="form-floating mb-4">
-                            <input type="email" class="form-control" id="emailaddress"  name="email" placeholder="name@example.com" autocomplete="off">
+                            <input type="email" class="form-control" id="email"  name="email" placeholder="name@example.com" autocomplete="off">
                             
                         </div>
                         <label for="floatingPassword">Password</label>
@@ -254,8 +254,67 @@ if(isset($_SESSION['error'])){
 
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="register.js"></script>
+   <script>
+       function validateform(){
+    var $registerform= $("#register");
+    if($registerform.length){
+  $registerform.validate({
+      rules:{
+         
+          firstname:{
+              required:true
+          },
+          lastname:{
+            required:true
+          },
+          email:{
+              required:true
+          },
+          password:{
+              required:true
+          },
+          cpassword:{
+              required:true
+          },
+         
+          
+      },
+      messages:{
+        firstname:{
+            required:"enter first Name",
+        },
+        lastname:{
+            required:"please enter your lastname",
+            },
+ 
+        username:{
+            required:"Please Enter Your Username",
+            },
+            email:{
+                required:"Please Enter Your Email",
+                },
+                password:{
+                    required:"Please Enter Your Password",
+                    },
+                    cpassword:{
+                        required:"Confirm Your Password",
+                        },
+                     
+             
+            }, 
+          
+            
+
+  })      
+    }
+};
+
+       </script>
    
+
+
+
+
     </form>
    </body>
 
