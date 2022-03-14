@@ -8,10 +8,9 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
-    <title>DASHMIN - Bootstrap Admin Template</title>
+    <title>Animal List</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -23,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -37,7 +36,33 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <style>
+    
+    .pagination {
+      display: inline-block;
+    }
+    
+    .pagination a {
+      color: black;
+      float: left;
+      padding: 8px 16px;
+      text-decoration: none;
+      transition: background-color .3s;
+      border: 1px solid #ddd;
+      margin: 0 4px;
+    }
+    
+    .pagination a.active {
+      background-color: #4CAF50;
+      color: white;
+      border: 1px solid #4CAF50;
+    }
+    
+    .pagination a:hover:not(.active) {background-color: #ddd;}
+    </style>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
+
 
 <body>
     <form method="POST" action="">
@@ -91,7 +116,16 @@
                             <tbody>
                                 <?php
                                 include 'dbcon.php';
-                                $sql1="SELECT * FROM ticket";
+                                $limit=5;
+                                          
+                                if(isset($_GET['page'])){
+                                 $page=$_GET['page'];
+                                }else{
+                                 $page=1;
+                                }
+                                $offset=($page-1)*$limit;
+                   
+                                $sql1="SELECT * FROM ticket ORDER BY user_id DESC LIMIT {$offset},{$limit}";
                                 $res=$conn->query($sql1);
                                 if(!$res){
                                 die("invalid query: ".$conn->error);
@@ -111,12 +145,11 @@
 
 
                           echo "<td><div class='dropdown'>
-                          <a href='#' class='nav-link dropdown-toggle' data-bs-toggle='dropdown'><i class='far fa-file-alt me-2'></i>action</a>
+                          <a href='#' class='nav-link dropdown-toggle' data-bs-toggle='dropdown'><i class='far fa-file-alt me-2'></i>Action</a>
                           <div class='dropdown-menu bg-border-2px solid blue'>
                               <a href=admin_user_update.php?uid=$row[user_id] name='update' class='dropdown-item'>Edit</a>
                               <a href='ticketprint.php?tid=$row[user_id]' name='print' class='dropdown-item'>Print</a>
-                              <a href='' class='dropdown-item'>Reject</a>
-                                    </div>          
+                                      </div>          
                                     </td></tr>";
                                 }   
 
@@ -125,8 +158,47 @@
                                 ?>
                                 
                             </tbody>
+                          
+                             
+                              
+                                           
                         </table>
+                        <br>
+                        <?php
+                        $sql2="SELECT * FROM ticket ";
+                        $result2=mysqli_query($conn,$sql2) or die("failed");
+                        if(mysqli_num_rows($result2)>0){
+                            $total_records=mysqli_num_rows($result2);
+             
+                            $total_page=ceil($total_records/$limit);
+                            echo '<div class="pagination">';
+
+                            if($page > 1){
+                                echo '<a href="confirmed-tickets.php?page='.($page - 1).'">< Previous</a>';
+                            }
+
+                            
+                            for($i =1;$i <= $total_page;$i++){
+                                if($i==$page){
+                                    $active="active";
+
+                                }
+                                else{
+                                    $active="";
+                                }
+                                echo '<a class="'.$active.'" href="confirmed-tickets.php?page='.$i.'">'.$i.'</a>';
+                            }
+                           
+                            if($total_page > $page){
+                                echo '<a href="confirmed-tickets.php?page='.($page + 1).'">Next ></a>';
+                            }
+  echo '</div>';
+                        }
+
+
                         
+                        ?>
+             
                     </div>
                 </div>
             </div>

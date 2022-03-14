@@ -42,10 +42,10 @@ session_start();
         
                 $result = mysqli_query($conn, $sql);
         
-                if ($result) {
-                    $showAlert = true;
-                    header("location:login.php");
-                
+                if($result) {
+
+                    header("location:successful_register.php");
+               
                 }
             }
             else{
@@ -90,7 +90,9 @@ session_start();
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 <!-- Latest compiled and minified CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+<script type="text/javascript" src='../files/bower_components/sweetalert/js/sweetalert2.all.min.js'> </script>
+<!-- SweetAlert2 -->
+<link rel="stylesheet" href='../files/bower_components/sweetalert/css/sweetalert2.min.css' media="screen" />
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
 
@@ -102,6 +104,7 @@ session_start();
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- Libraries Stylesheet -->
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
@@ -221,12 +224,12 @@ if(isset($_SESSION['error'])){
                         <!-- <div class="d-flex align-items-center justify-content-between mb-4">
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                              <label class="form-check-label" for="exampleCheck1">Check me out</label>
                             </div>
                             <a href="">Forgot Password</a>
                         </div> -->
                         <input type="reset" value="Reset" class="btn btn-secondary py-3 w-100 mb-4" />
-                        <input type="submit" name="submit" class="btn btn-primary py-3 w-100 mb-4"></button>
+                        <input type="submit"  id="submit" name="submit" class="btn btn-primary py-3 w-100 mb-4"></button>
                         <p class="text-center mb-0">Already have an Account? <a href="login.php">Sign In</a></p>
                     </div>
                 </div>
@@ -254,65 +257,9 @@ if(isset($_SESSION['error'])){
 
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-   <script>
-       function validateform(){
-    var $registerform= $("#register");
-    if($registerform.length){
-  $registerform.validate({
-      rules:{
-         
-          firstname:{
-              required:true
-          },
-          lastname:{
-            required:true
-          },
-          email:{
-              required:true
-          },
-          password:{
-              required:true
-          },
-          cpassword:{
-              required:true
-          },
-         
-          
-      },
-      messages:{
-        firstname:{
-            required:"enter first Name",
-        },
-        lastname:{
-            required:"please enter your lastname",
-            },
- 
-        username:{
-            required:"Please Enter Your Username",
-            },
-            email:{
-                required:"Please Enter Your Email",
-                },
-                password:{
-                    required:"Please Enter Your Password",
-                    },
-                    cpassword:{
-                        required:"Confirm Your Password",
-                        },
-                     
-             
-            }, 
-          
-            
-
-  })      
-    }
-};
-
+   <script src="register.js">
        </script>
-   
-
-
+  
 
 
     </form>

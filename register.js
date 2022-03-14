@@ -24,15 +24,12 @@ $(function(){
       },
       messages:{
         firstname:{
-            required:"enter first Name",
+            required:"Please Enter First Name",
         },
         lastname:{
-            required:"please enter your lastname",
+            required:"Please Enter Your Lastname",
             },
  
-        username:{
-            required:"Please Enter Your Username",
-            },
             email:{
                 required:"Please Enter Your Email",
                 },
