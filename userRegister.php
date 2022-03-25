@@ -1,12 +1,8 @@
 
 <?php
-
-include 'dbcon.php';
 session_start();
-	include 'dbcon.php';
-        
+include 'dbcon.php';
    
-        
         // Include file which makes the
         // Database Connection.
        if(isset($_POST["register"])){
@@ -45,13 +41,13 @@ session_start();
                 $result = mysqli_query($conn, $sql);
         
                 if ($result) {
-                    $showAlert = true;
-                    header("location:userlogin.php");
+                  
+                    header("location:user-successful_register.php");
                 
                 }
             }
             else{
-                $_SESSION['error']="Duplicate";
+                $_SESSION['error']="Email Already Taken .Please Try Another";
                 header("location:userRegister.php");
                  echo"<h3 id=demo></h3>";    
             }
@@ -106,6 +102,10 @@ session_start();
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
     <!-- Libraries Stylesheet -->
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
@@ -216,6 +216,42 @@ input[type=submit] {
 	top: 185px;
 }
 </style>
+
+
+<!-- <script type="text/javascript">
+   
+   $(document).ready(function(){
+$('#email').keyup(function(){
+      $.post("aval_user.php",
+      {email: $('#email').val()
+
+      },function(response)
+      {
+          $('#usernameResult').fadeOut();
+          setTimeout("Userresult('usernameResult','"+escape(response)+"')",350);
+
+      });
+      return false;
+});
+   });
+
+function Userresult(id,response)
+{
+  $('#usernameLoading').hide();
+  $('#'+id).html(unescape(response));
+  $('#'+id).fadeIn();
+}
+
+   
+   </script> -->
+   <?php   
+   if(isset($_SESSION['error'])){
+ 
+ echo '<script type ="text/JavaScript">';  
+echo 'alert("User already exist")';  
+echo '</script>';  
+   }
+?> 
 </head>
 <body>
 
@@ -224,8 +260,12 @@ input[type=submit] {
 
 <body>
 <?php
+
 include 'user-header.php';
+
 ?>
+
+
   <div id="content">
     
     
@@ -233,14 +273,12 @@ include 'user-header.php';
    
         <!-- Sign In Start -->
        
-  <div class="imgcontainer">
+  
 
-    <img src="users/images/img_avatar2.png" alt="Avatar" class="avatar">
-    
-<br>  
-  </div>
+    <h2 style="text-align: center;">Register Form</h2>
 
-  <div class="container" style="padding-top: 20px;">
+
+  <div class="container">
   <h1></h1>
     <label for="uname"><b>First Name</b></label>
     <br>
@@ -249,9 +287,10 @@ include 'user-header.php';
     <br>                
     <label for="uname"><b>Last Name</b></label>
     <br> <input type="text"  id="lastname" name="lastname" placeholder="Enter your Last Name" autocomplete="off">
-    <br>
+   
     <br><label for="uname"><b>E-mail</b></label>
     <br> <input type="email"  id="emailaddress"  name="email" placeholder="name@example.com" value="" autocomplete="off">
+    
     <br>
     <label for="psw"><b>Password</b></label>
     <br><input type="password" placeholder="Enter Password" name="password" value="" required>
@@ -260,7 +299,9 @@ include 'user-header.php';
     <br><label for="uname"><b>Confirm Password</b></label>
     <br><input type="password" placeholder="Confirm Password" name="cpassword" required>
    <input type="submit" name="register" value="Register"/>
-  
+   <p class="text-center mb-0">Already have an Account? <a href="userlogin.php" style="color:dodgerblue;">Log-In</a></p>
+   
+                
   <br>
   <!-- <a href="#" id="button">Buy tickets / Check Events</a>  -->
   

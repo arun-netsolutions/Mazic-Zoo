@@ -147,7 +147,7 @@
                           echo "<td><div class='dropdown'>
                           <a href='#' class='nav-link dropdown-toggle' data-bs-toggle='dropdown'><i class='far fa-file-alt me-2'></i>Action</a>
                           <div class='dropdown-menu bg-border-2px solid blue'>
-                              <a href=admin_user_update.php?uid=$row[user_id] name='update' class='dropdown-item'>Edit</a>
+
                               <a href='ticketprint.php?tid=$row[user_id]' name='print' class='dropdown-item'>Print</a>
                                       </div>          
                                     </td></tr>";

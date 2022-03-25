@@ -1,17 +1,9 @@
-
 <?php
-
 include 'dbcon.php';
-session_start();
-if(isset($_SESSION["email"])){
-    header("location:user-home.php");
-
-}
-
-else if(isset($_POST['signin'])){
+if(isset($_POST['signin'])){
     
     $email=mysqli_real_escape_string($conn,$_POST['email']);
-    $password=mysqli_real_escape_string($conn,$_POST['password']);
+    $password=$_POST['password'];
    
     $sql="select * from users where email='$email'";
     
@@ -28,33 +20,23 @@ else if(isset($_POST['signin'])){
                 $_SESSION["user_id"]=$row["user_id"];
                 $_SESSION["role_id"]=$row["role_id"];
  
-                header("location:admin-home.php");
+                header("location:user-gallery.php");
                
             }
-            else{
-              echo "<script type=text/javascript>";
-              echo" alert('Email or Password Does Not Match Or Your Profile Is Not Approved Yet ')";
-               echo "</script>";
-              header("location:userlogin.php");
-               
-            }
-     
-    }
+            
     
-  }
+
      else{
-      echo "<script type=text/javascript>";
-     echo" alert('username or password does not match or profile is not approved yet ')";
-      echo "</script>";
-     header("location:userlogin.php");
+        header("location:unsuccessful_login.php");
+     
         exit();
      }
-    }    
-
-
-
+        
+}
+}
+}
+    
    ?> 
-     
 
 
 
@@ -101,6 +83,7 @@ else if(isset($_POST['signin'])){
     <!-- Template Stylesheet -->
     <link href="users/css/style.css" rel="stylesheet">
     <style>
+
         input[type=text], input[type=password] {
   width: 80%;
   padding: 12px 20px;
@@ -193,61 +176,31 @@ input[type=submit] {
 
         </style>
 </head>
-<script>  
-function validate()
-{
- var email=$("#email").val();
- var pass=$("#password").val();
- 
- var email_regex=/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
- var password_regex1=/([a-z].*[A-Z])|([A-Z].*[a-z])([0-9])+([!,%,&,@,#,$,^,*,?,_,~])/;
- var password_regex2=/([0-9])/;
- var password_regex3=/([!,%,&,@,#,$,^,*,?,_,~])/;
 
- if(email_regex.test(email)==false)
- {
-  alert("Please Enter Correct Email");
-  return false;	
- }
- else if(pass.length<8 || password_regex1.test(pass)==false || password_regex2.test(pass)==false || password_regex3.test(pass)==false)
- {
-  alert("Please Enter Strong Password");
-  return false;
- }
- else
- {
-  return true;
- }
-}
-
-
-
- 
-</script>  
 <body>
 <?php
 include 'user-header.php';
 ?>
-  <div id="content">
+  <div id="content" style="text-align: center;">
     
  
-    <form name="myform" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>"  onsubmit="return validate()" >
+    <form name="myform" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>"  >
+    <h2 style="text-align: center;color:brown">Login Form</h2>
         <!-- Sign In Start -->
-       
-  <div class="imgcontainer" style="align-items: flex-end;">
-      <center>
-    <img src="users/images/img_avatar2.png" alt="Avatar" class="avatar" style="text-align: right;">
-      </center>
-  </div>
-
-  <div class="container">
+       <hr>
+  <div class="container" style="text-align:center; margin-top:20px;">
     <label for="uname"><b>Username</b></label>
+    <br>
     <input type="text" placeholder="Enter Username" name="email" required>
 <br>
     <label for="psw"><b>Password</b></label>
+    <br>
     <input type="password" placeholder="Enter Password" name="password" required>
-        
-    <input type="submit" name="signin" value="Login"/>
+        <br>
+    <input type="submit" name="signin" value="Login" style="margin-left:33%;"/>
+    <p class="text-center mb-0">Don't have an Account? <a href="userRegister.php" style="color:dodgerblue;">Register Here..</a></p>
+   
+   
   </div>
 
   <div class="container" style="background-color:#f1f1f1">

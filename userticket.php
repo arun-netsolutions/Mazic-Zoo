@@ -4,40 +4,39 @@
 include 'dbcon.php';
 session_start();
 
-if(isset($_POST['book'])){
-  $total=$_POST['total_val'];
+if (isset($_POST['book'])) {
+    $total=$_POST['total_val'];
 
-  $adult=$_POST['total_adult'];
+    $adult=$_POST['total_adult'];
 
-  $child=$_POST['total_child'];
+    $child=$_POST['total_child'];
 
-  $firstname=$_POST['first_name'];
+    $firstname=$_POST['first_name'];
 
-  $lastname=$_POST['last_name'];
+    $lastname=$_POST['last_name'];
 
-  $phone=$_POST['phone'];
-$quantity=$adult+$child;
+    $phone=$_POST['phone'];
+    $quantity=$adult+$child;
+    $emailuser=$_SESSION['email'];
+    $Date=$_POST['date'];
+    $quantity=$adult+$child;
 
-  $Date=$_POST['date'];
-$quantity=$adult+$child;
-
-// $sql="INSERT INTO `ticket`( `first_name`, `last_name`, `quantity`, `adult`, `child`, `status`, `date`) VALUES ('$firstname','$lastname','$phone','$quantity','$adult','$childs','$Date','$quantity')";
-$sql="INSERT INTO `ticket`( `first_name`, `last_name`, `phone`, `quantity`, `adult`, `child`,  `date`,`total`) VALUES ('$firstname','$lastname','$phone','$quantity','$adult','$child','$Date','$total')";
-$result=mysqli_query($conn, $sql)or die("query unscessful.");
-if(mysqli_affected_rows($conn)==1)
-{
-header("location:confirmed-tickets.php");
+    // $sql="INSERT INTO `ticket`( `first_name`, `last_name`,`email`, `quantity`, `adult`, `child`, `status`, `date`) VALUES ('$firstname','$lastname','$phone','$quantity','$adult','$childs','$Date','$quantity')";
+    $sql="INSERT INTO `ticket`( `first_name`, `last_name`,`email`, `phone`, `quantity`, `adult`, `child`,  `date`,`total`) VALUES ('$firstname','$lastname','$emailuser','$phone','$quantity','$adult','$child','$Date','$total')";
+    $result=mysqli_query($conn, $sql)or die("query unscessful.");
+    if (mysqli_affected_rows($conn)==1) {
+        $email=$_SESSION["email"];
+        $to_mail="$email";
+        $subject="Testing Email using php";
+        $body= "Hi this email is sent by The Mazic Zoo Regarding Successful booking of your tickets on={$Date} \n your details are: \n First-Name :{$firstname},\n last-name:{$lastname},\n Phone-No:{$phone},\n Quantity:{$quantity},\n Adults:{$adult},\n Childs:{$child},\n Total-Amount:{$total} ";
+        $headers="from:arun66gp@gmail.com";
+  
+        mail($to_mail, $subject, $body, $headers);
+    } else {
+        echo "error";
+    }
 }
-else{
-  echo "error";
-}
-      
-
-
-}
-
-
-   ?> 
+    ?> 
      
 
 
@@ -89,10 +88,11 @@ else{
 
 <body>
 <?php
-include 'user-header.php';
-?>
-  <h2 style="text-align: center;">Booking Form</h2>
-  <div id="content">
+include 'user-header.php'; ?>
+  <h2 style="text-align: center;">Tickets</h2>
+  <?php
+    echo '<a href="userbookedtickets.php?email=$_Session[email]" style="margin-left:70%;">Prevoius Tickets..</a>'; ?>
+   <div id="content">
  
     <form id="login" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST"> 
     
@@ -101,26 +101,28 @@ include 'user-header.php';
     <input type="text" name="first_name" class="form-control" value='
                                     <?php
                           
-                                    if(isset( $_SESSION["first_name"])){
-   
-                                      echo  $_SESSION["first_name"];
-                                  }  
-                                    
-                                    ?>
+                                    if (isset($_SESSION["first_name"])) {
+                                        echo  $_SESSION["first_name"];
+                                    } ?>
                                     
                                    ' />
     <label for="psw"><b>Last Name</b></label>
  
     <input type="text" name="last_name" class="form-control" value=' <?php
                           
-                          if(isset( $_SESSION["last_name"])){
-
-                            echo  $_SESSION["last_name"];
-                        }  
+                          if (isset($_SESSION["last_name"])) {
+                              echo  $_SESSION["last_name"];
+                          } ?>
+                          '
+                          />
+                          <label for="psw"><b>Email</b></label>
+                          <input type="text" name="email" class="form-control" value=' <?php
                           
-                          ?>
-                          
-                         ' ' />   
+                          if (isset($_SESSION["email"])) {
+                              echo  $_SESSION["email"];
+                          } ?>
+                          '
+                          />     
     <label for="psw"><b>Phone Number</b></label>
     <small>Format: 123-4567-890</small>
  <input type="text" id="phone" name="phone" placeholder="" class="form-control" pattern="[0-9]{3}-[0-9]{4}-[0-9]{3}" required>
@@ -202,8 +204,7 @@ include 'user-header.php';
                           </div>
                           <!-- Footer Start -->
                           <?php
-                          include 'user-footer.php';
-                          ?>
+                          include 'user-footer.php'; ?>
               
                       <!-- Footer End -->
                         
@@ -238,3 +239,6 @@ include 'user-header.php';
 
 </body>
 </html>
+<?php
+
+?>

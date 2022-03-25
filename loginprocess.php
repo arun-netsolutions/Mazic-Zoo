@@ -16,26 +16,24 @@ if(isset($_POST['signin'])){
                 session_start();
                 $_SESSION["email"]=$row["email"];
                 $_SESSION["first_name"]=$row["first_name"];
+                $_SESSION["last_name"]=$row["last_name"];
                 $_SESSION["user_id"]=$row["user_id"];
                 $_SESSION["role_id"]=$row["role_id"];
  
                 header("location:admin-home.php");
                
             }
-            else{
-                echo "<script>alert('username or password does not match or profile is not approved yet ')</script>";
-                header("location:login.php");
-                 echo "<script>alert('username or password does not match')</script>";
-            }
-     
-    }
-}
+            
+    
+
      else{
-        echo " <alert>You Have Entered Incorrect Password</alert>";
+        header("location:unsuccessful_login.php");
      
         exit();
      }
         
+}
+}
 }
     
    ?> 
